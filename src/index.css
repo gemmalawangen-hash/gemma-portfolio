@@ -1,0 +1,37 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+@theme {
+  --color-brand-pink: #D25380;
+  --color-brand-light-orange: #EDDBD2;
+  --color-brand-pastel-orange: #F6C391;
+  --color-brand-orange: #E08E6C;
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Lato", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-gray-800 antialiased;
+  }
+}
+
+@layer utilities {
+  .water-drop-texture {
+    background-image: radial-gradient(circle at 20% 30%, rgba(210, 83, 128, 0.05) 0%, transparent 10%),
+                      radial-gradient(circle at 80% 70%, rgba(224, 142, 108, 0.05) 0%, transparent 15%);
+  }
+  
+  .galaxy-gradient {
+    background: linear-gradient(135deg, #D25380 0%, #F6C391 50%, #E08E6C 100%);
+  }
+
+  .nav-link-hover {
+    @apply relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-brand-pink after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .dashed-border {
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='16' ry='16' stroke='%23F6C391' stroke-width='3' stroke-dasharray='8%2c 12' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    border-radius: 16px;
+  }
+}
