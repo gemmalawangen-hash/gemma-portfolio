@@ -1,10 +1,11 @@
 import { motion } from 'motion/react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState('All');
 
-  const filters = ['All', 'Web Design', 'Systems & Automation', 'Social Media'];
+  const filters = ['All', 'Web Design', 'Systems & Automation', 'Social Media', 'Graphic Design'];
 
   const projects = [
     {
@@ -22,6 +23,13 @@ export default function Portfolio() {
       color: "bg-brand-pastel-orange"
     },
     {
+      title: "Brand Identity: Zenith",
+      category: "Graphic Design",
+      desc: "A complete logo and brand guidelines package for a tech startup.",
+      image: "https://picsum.photos/seed/logo1/800/600",
+      color: "bg-brand-pink"
+    },
+    {
       title: "Zoho CRM Architecture",
       category: "Systems & Automation",
       desc: "Customizing Zoho environments to mirror complex sales cycles and B2B workflows.",
@@ -29,10 +37,24 @@ export default function Portfolio() {
       color: "bg-brand-orange"
     },
     {
+      title: "Event Banners: Summer Fest",
+      category: "Graphic Design",
+      desc: "Vibrant large-format banners and digital assets for a music festival.",
+      image: "https://picsum.photos/seed/banner1/800/600",
+      color: "bg-brand-pastel-orange"
+    },
+    {
       title: "Custom CMS Development",
       category: "Web Design",
       desc: "A tailor-made content management system for high-volume publishing and asset tracking.",
       color: "bg-brand-pink"
+    },
+    {
+      title: "Minimalist Poster Series",
+      category: "Graphic Design",
+      desc: "A series of three posters exploring negative space and typography.",
+      image: "https://picsum.photos/seed/poster1/800/600",
+      color: "bg-brand-orange"
     }
   ];
 
@@ -185,13 +207,52 @@ export default function Portfolio() {
         </div>
       </section>
 
+      {/* Graphic Design Gallery */}
+      <section className="py-24 px-6 bg-white">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-4xl md:text-5xl text-brand-pink mb-4">Graphic Design Gallery</h2>
+            <p className="text-gray-500 italic">Logos, Banners, & Posters</p>
+            <div className="h-1 w-20 bg-brand-pastel-orange mx-auto mt-6"></div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { type: 'Logo', title: 'Modern Tech Logo', img: 'https://picsum.photos/seed/logo2/800/800' },
+              { type: 'Banner', title: 'Social Media Header', img: 'https://picsum.photos/seed/banner2/1200/400' },
+              { type: 'Poster', title: 'Corporate Event Poster', img: 'https://picsum.photos/seed/poster2/800/1200' },
+              { type: 'Logo', title: 'Eco-Friendly Brand', img: 'https://picsum.photos/seed/logo3/800/800' },
+              { type: 'Banner', title: 'Website Hero Banner', img: 'https://picsum.photos/seed/banner3/1200/400' },
+              { type: 'Poster', title: 'Creative Workshop', img: 'https://picsum.photos/seed/poster3/800/1200' },
+            ].map((item, i) => (
+              <motion.div 
+                key={i}
+                whileHover={{ scale: 1.02 }}
+                className="relative group rounded-2xl overflow-hidden shadow-lg aspect-square sm:aspect-auto sm:h-80"
+              >
+                <img 
+                  src={item.img} 
+                  alt={item.title} 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-6">
+                  <span className="text-brand-pastel-orange text-xs font-bold uppercase tracking-widest mb-1">{item.type}</span>
+                  <h4 className="text-white font-serif text-xl">{item.title}</h4>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="py-24 px-6 text-center bg-white">
         <div className="max-w-3xl mx-auto">
           <h2 className="font-serif text-4xl md:text-5xl text-gray-900 mb-8">Ready for your own systems transformation?</h2>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button className="px-12 py-5 bg-brand-pink text-white font-bold text-lg rounded-full hover:scale-105 transition-transform shadow-xl">Start Your Project</button>
-            <button className="px-12 py-5 border-2 border-brand-pink text-brand-pink font-bold text-lg rounded-full hover:bg-brand-pink/5 transition-all">Book a Consultation</button>
+            <Link to="/contact" className="px-12 py-5 border-2 border-brand-pink text-brand-pink font-bold text-lg rounded-full hover:bg-brand-pink/5 transition-all text-center">Book a Consultation</Link>
           </div>
         </div>
       </section>
